@@ -1,0 +1,80 @@
+
+/dataset.csv
+/neural_integrator.pt
+/data/
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+*.egg
+.eggs/
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv/
+
+# =========================
+# Jupyter
+# =========================
+.ipynb_checkpoints/
+
+# =========================
+# Data (DO NOT PUSH LARGE DATA)
+# =========================
+data/raw/
+data/cleaned/
+data/processed/
+
+*.csv
+*.tsv
+*.xlsx
+*.json
+
+# =========================
+# Model Files
+# =========================
+*.pkl
+*.joblib
+*.h5
+*.pt
+*.pth
+*.onnx
+*.pt
+
+# =========================
+# Logs
+# =========================
+*.log
+
+# =========================
+# OS Files
+# =========================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# =========================
+# IDE
+# =========================
+.vscode/
+.idea/
+
+# =========================
+# Streamlit
+# =========================
+.streamlit/
+
+# =========================
+# Temporary Files
+# =========================
+*.tmp
+*.temp
