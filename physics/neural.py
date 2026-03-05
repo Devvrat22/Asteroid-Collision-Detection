@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 import numpy as np
+from pathlib import Path
 
 
 class NeuralIntegrator(nn.Module):
@@ -27,8 +28,22 @@ class NeuralIntegrator(nn.Module):
 
 def load_integrator(path: str = "models/neural_integrator.pt") -> NeuralIntegrator:
     """Instantiate a network and load weights from disk."""
+    project_root = Path(__file__).resolve().parent.parent
+    candidate_paths = [
+        Path(path),
+        project_root / path,
+        project_root / "neural_integrator.pt",
+    ]
+
+    model_path = next((p for p in candidate_paths if p.exists()), None)
+    if model_path is None:
+        checked = ", ".join(str(p) for p in candidate_paths)
+        raise FileNotFoundError(
+            f"Could not find neural integrator weights. Checked: {checked}"
+        )
+
     model = NeuralIntegrator()
-    model.load_state_dict(torch.load(path, map_location="cpu"))
+    model.load_state_dict(torch.load(model_path, map_location="cpu"))
     model.eval()
     return model
 
