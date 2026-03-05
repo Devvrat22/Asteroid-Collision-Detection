@@ -14,7 +14,7 @@ Interactive asteroid trajectory simulation project combining:
 
 ## Project Layout
 
-```
+```text
 Asteroid_detection/
 |-- app.py                      # Streamlit app (main interface)
 |-- main.py                     # CLI entry point
@@ -46,7 +46,7 @@ The app currently exposes three modes:
 - Plots 3D Earth and asteroid trajectories.
 
 2. `Kepler simulation`
-- Uses orbital elements (`a, e, i, Ω, ω`) and mean anomaly progression.
+- Uses orbital elements (`a, e, i, Omega, omega`) and mean anomaly progression.
 - Computes asteroid and Earth Keplerian trajectories.
 - Reports minimum Earth-asteroid distance in this Kepler model.
 
@@ -54,6 +54,33 @@ The app currently exposes three modes:
 - Loads `NeuralIntegrator` PyTorch weights.
 - Rolls out predicted trajectory and compares against RK4.
 - Plots prediction error and 3D trajectory comparison.
+
+## Models
+
+The repository contains both classic ML experiments and a neural trajectory model.
+
+### Classic ML experiment notebooks (`models/`)
+
+- `models/Logistic_Regression.ipynb`
+- `models/Logistic_regression_2.ipynb`
+- `models/Random_forst.ipynb`
+- `models/Gradient_boosting.ipynb`
+- `models/XG_boost.ipynb`
+
+These notebooks are tabular ML experiments and are separate from the orbital simulation modes in Streamlit.
+
+### Neural trajectory model (used by Streamlit)
+
+- `models/train_neural_generator.py`: training script for the neural integrator.
+- `physics/neural.py`: model architecture, weight loading, and rollout logic.
+- `neural_integrator.pt` or `models/neural_integrator.pt`: saved PyTorch weights.
+
+### Data artifacts
+
+- `data/processed/X_train.pkl`, `X_test.pkl`, `y_train.pkl`, `y_test.pkl`
+- `data/processed/scaler.pkl`
+
+These files are used for preprocessing and training workflows.
 
 ## Installation
 
@@ -128,4 +155,3 @@ If not found, the app shows a clear error in Neural mode instead of crashing.
 ```bash
 pytest tests
 ```
-
